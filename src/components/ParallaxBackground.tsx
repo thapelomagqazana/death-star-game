@@ -1,50 +1,75 @@
 /**
  * @file ParallaxBackground.tsx
- * @description Multi-layered parallax nebula background for the landing page.
+ * @description Multi-layered parallax scrolling background with randomized asteroids.
  */
-import React from "react";
+
 import { motion } from "framer-motion";
-import nebula1 from "../assets/images/nebula1.jpg";
-import nebula2 from "../assets/images/nebula2.jpg";
-import stars from "../assets/images/stars.jpg";
+import { useEffect, useState } from "react";
 
 /**
  * @function ParallaxBackground
- * @description Creates a multi-layered animated parallax effect for the background.
- * 
+ * @description Renders a parallax scrolling space background with depth effects.
  */
-const ParallaxBackground : React.FC = () => {
+const ParallaxBackground = () => {
+  const [asteroids, setAsteroids] = useState<{ x: number; y: number; size: number; speed: number }[]>([]);
+
+  // Generate random asteroids
+  useEffect(() => {
+    const generateAsteroids = () => {
+      const newAsteroids = Array.from({ length: 10 }, () => ({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 50 + 20, // Size between 20px and 70px
+        speed: Math.random() * 5 + 2, // Speed between 2 and 7
+      }));
+      setAsteroids(newAsteroids);
+    };
+
+    generateAsteroids();
+  }, []);
+
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
-      {/* Background Nebula Layer 1 */}
-      <motion.img
-        src={nebula1}
-        alt="Nebula Layer 1"
-        className="absolute w-full h-full object-cover opacity-30"
-        initial={{ y: 0 }}
+      {/* Layer 1: Distant Nebula */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-40"
+        style={{ 
+            backgroundImage: "url('/images/space.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+        }}
         animate={{ y: [0, -50, 0] }}
-        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
       />
 
-      {/* Background Nebula Layer 2 */}
-      <motion.img
-        src={nebula2}
-        alt="Nebula Layer 2"
-        className="absolute w-full h-full object-cover opacity-40"
-        initial={{ y: 0 }}
-        animate={{ y: [0, 50, 0] }}
-        transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+      {/* Layer 2: Stars (Slow) */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center opacity-50"
+        style={{ backgroundImage: "url('/images/stars.jpg')" }}
+        animate={{ y: [0, -30, 0] }}
+        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
       />
 
-      {/* Stars Layer */}
-      <motion.img
-        src={stars}
-        alt="Stars"
-        className="absolute w-full h-full object-cover opacity-70"
-        initial={{ scale: 1 }}
-        animate={{ scale: [1, 1.1, 1] }}
-        transition={{ duration: 30, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
-      />
+      {/* Layer 3: Floating Asteroids (Faster) */}
+      {asteroids.map((asteroid, index) => (
+        <motion.img
+          key={index}
+          src="/images/meteor.png"
+          className="absolute"
+          style={{
+            left: asteroid.x,
+            top: asteroid.y,
+            width: asteroid.size,
+            height: asteroid.size,
+          }}
+          animate={{ y: [asteroid.y, window.innerHeight + 100] }}
+          transition={{
+            duration: asteroid.speed,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        />
+      ))}
     </div>
   );
 };

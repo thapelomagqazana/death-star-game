@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import HUD from "../components/HUD";
 import GameControls from "../components/GameControls";
 import PauseMenu from "../components/PauseMenu";
+import ParallaxBackground from "../components/ParallaxBackground";
 
 /**
  * @function Game
@@ -16,7 +17,10 @@ const Game: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="relative h-screen w-screen bg-black text-white flex flex-col">
+    <div className="relative h-screen w-screen text-white flex flex-col">
+      {/* Parallax Background */}
+      <ParallaxBackground />
+      
       {/* Heads-Up Display (HUD) */}
       <HUD />
 

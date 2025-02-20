@@ -2,23 +2,25 @@
  * @file Landing.tsx
  * @description The main entry screen for the game. Displays a welcome message and a button to start the game.
  */
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import "../styles/landing.css";
+import { motion, AnimatePresence } from "framer-motion";
+import SettingsMenu from "../components/SettingsMenu";
 
 /**
  * @function Landing
- * @description Displays the landing page with a title and a start button.
+ * @description Displays the landing page with a title, buttons, and a settings modal.
  * @returns {JSX.Element} React component representing the landing page.
  */
-const Landing : React.FC = () => {
+const Landing: React.FC = () => {
+  const [showSettings, setShowSettings] = useState(false);
+
   return (
-    <div className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+    <div className="relative h-screen w-screen flex flex-col items-center justify-center overflow-hidden">
       {/* Background Animation */}
       <div className="absolute inset-0 -z-10">
         <motion.div
-          className="absolute w-full h-full bg-gradient-to-b from-blue-900 to-black opacity-50"
+          className="absolute w-full h-full bg-gradient-to-b from-blue-900 to-black opacity-60"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
@@ -38,9 +40,19 @@ const Landing : React.FC = () => {
       {/* Animated Buttons */}
       <div className="mt-12 flex flex-col gap-4">
         <Button text="Start Game" link="/game" color="blue" />
-        <Button text="Settings" link="/settings" color="green" />
+        <button
+          className="glass-button"
+          onClick={() => setShowSettings(true)}
+        >
+          Settings
+        </button>
         <Button text="Exit" link="/exit" color="red" />
       </div>
+
+      {/* Settings Modal */}
+      <AnimatePresence>
+        {showSettings && <SettingsMenu onClose={() => setShowSettings(false)} />}
+      </AnimatePresence>
     </div>
   );
 };
@@ -69,14 +81,13 @@ const Button = ({
     >
       <Link to={link}>
         <button
-          className={`px-6 py-3 text-lg font-bold rounded-lg shadow-lg transition-all
-            ${
-              color === "blue"
-                ? "bg-blue-500 hover:bg-blue-700"
-                : color === "green"
-                ? "bg-green-500 hover:bg-green-700"
-                : "bg-red-500 hover:bg-red-700"
-            }`}
+          className={`glass-button ${
+            color === "blue"
+              ? "bg-blue-500 hover:bg-blue-700"
+              : color === "green"
+              ? "bg-green-500 hover:bg-green-700"
+              : "bg-red-500 hover:bg-red-700"
+          }`}
         >
           {text}
         </button>
