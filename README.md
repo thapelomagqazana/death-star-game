@@ -1,50 +1,90 @@
-# React + TypeScript + Vite
+# 🚀 Death Star Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **parallax scrolling multi-level game** built with **Vite, React, TypeScript, Zustand, Framer Motion, and React Router**.
 
-Currently, two official plugins are available:
+## 📂 Folder Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+/src
+│── /components    → UI & Game components
+│── /hooks         → Custom hooks
+│── /assets        → Images, sounds, icons
+│── /styles        → Tailwind styles
+│── /pages         → Game screens
+│── App.tsx        → Main App component
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 🛠️ Tech Stack
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **React + TypeScript** (Component-based UI development)
+- **Vite** (Fast dev server & bundler)
+- **Zustand** (State management)
+- **Framer Motion** (Smooth animations)
+- **React Router** (Navigation & routing)
+- **Tailwind CSS** (Utility-first styling)
+
+---
+
+## 📦 Installation
+
+1️⃣ **Clone the repository:**
+   ```sh
+   git clone https://github.com/thapelomagqazana/death-star-game.git
+   cd death-star-game
+   ```
+
+2️⃣ **Install dependencies:**
+   ```sh
+   npm install
+   ```
+
+3️⃣ **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+
+4️⃣ **Build for production:**
+   ```sh
+   npm run build
+   ```
+
+---
+
+## 🚀 Deployment
+
+This project is **deployed on Netlify**:  
+🔗 **[View Live](https://death-star-game.netlify.app/)**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Follow these steps:
+
+1. **Fork the repository**.
+2. **Create a new branch**:
+   ```sh
+   git checkout -b feature/your-feature-name
+   ```
+3. **Commit your changes**:
+   ```sh
+   git commit -m "Add new feature"
+   ```
+4. **Push changes to GitHub**:
+   ```sh
+   git push origin feature/your-feature-name
+   ```
+5. **Open a Pull Request** and describe your changes.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.  
+📄 **[View License](LICENSE)**
+
+---
+
+### 🎮 Happy Coding & Game Development! 🚀✨
