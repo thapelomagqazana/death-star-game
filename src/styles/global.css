@@ -1,0 +1,13 @@
+/**
+ * @file global.css
+ * @description Global styles using TailwindCSS.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styling for body */
+body {
+    @apply bg-black text-white;
+}
