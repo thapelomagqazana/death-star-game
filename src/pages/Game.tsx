@@ -8,6 +8,7 @@ import HUD from "../components/HUD";
 import GameControls from "../components/GameControls";
 import PauseMenu from "../components/PauseMenu";
 import ParallaxBackground from "../components/ParallaxBackground";
+import Player from "../components/Player";
 
 /**
  * @function Game
@@ -24,10 +25,8 @@ const Game: React.FC = () => {
       {/* Heads-Up Display (HUD) */}
       <HUD />
 
-      {/* Game Area (Centered) */}
-      <div className="flex-grow flex items-center justify-center">
-        <p className="text-xl md:text-2xl lg:text-4xl">Gameplay Here...</p>
-      </div>
+      {/* Player Character */}
+      <Player />
 
       {/* Game Controls (Adaptive Buttons) */}
       <GameControls />
