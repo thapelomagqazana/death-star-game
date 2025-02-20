@@ -6,6 +6,10 @@
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "types": ["react", "react-dom"]
+    "jsxImportSource": "react",
+    "strict": true,
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext"
   }
 }

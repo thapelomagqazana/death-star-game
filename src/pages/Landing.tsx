@@ -2,7 +2,7 @@
  * @file Landing.tsx
  * @description The main entry screen for the game. Displays a welcome message and a button to start the game.
  */
-
+import React from "react";
 import { Link } from "react-router-dom";
 
 /**
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
  * @description Displays the landing page with a title and a start button.
  * @returns {JSX.Element} React component representing the landing page.
  */
-const Landing = (): JSX.Element => {
+const Landing : React.FC = () => {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-dark text-primary">
       {/* Game Title */}
