@@ -5,6 +5,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
+import Game from "./pages/Game";
 
 /**
  * @function App
@@ -16,6 +17,7 @@ const App : React.FC = () => {
     <Routes>
       {/* Define the landing page route */}
       <Route path="/" element={<Landing />} />
+      <Route path="/game" element={<Game />} />
     </Routes>
   );
 };

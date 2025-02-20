@@ -11,7 +11,7 @@ import stars from "../assets/images/stars.jpg";
 /**
  * @function ParallaxBackground
  * @description Creates a multi-layered animated parallax effect for the background.
- * @returns {JSX.Element} The animated background.
+ * 
  */
 const ParallaxBackground : React.FC = () => {
   return (
