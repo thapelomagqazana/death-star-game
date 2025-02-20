@@ -1,13 +1,15 @@
 /**
  * @file GameControls.tsx
- * @description Responsive game controls for Start, Pause, and Resume.
+ * @description Responsive game controls for Start, Pause, Resume and Settings.
  */
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import SettingsMenu from "./SettingsMenu";
 
 const GameControls = () => {
   const [paused, setPaused] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="absolute bottom-6 w-full flex justify-center gap-4 px-4">
@@ -19,6 +21,12 @@ const GameControls = () => {
         text={paused ? "Resume" : "Pause"}
         onClick={() => setPaused(!paused)}
       />
+
+      {/* Settings Button */}
+      <AnimatedButton text="Settings" onClick={() => setShowSettings(true)} />
+
+      {/* Settings Menu (Shows When Open) */}
+      {showSettings && <SettingsMenu onClose={() => setShowSettings(false)} />}
     </div>
   );
 };
