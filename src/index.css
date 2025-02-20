@@ -1,3 +1,78 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* === Neon Glow Effects === */
+
+/* Neon Glowing Text */
+.glow {
+  text-shadow: 0 0 8px rgba(13, 202, 240, 0.8), 0 0 16px rgba(13, 202, 240, 0.8);
+}
+
+/* Neon Button Styles */
+.neon-button {
+  background: linear-gradient(45deg, #9B5DE5, #0DCAF0);
+  border: none;
+  box-shadow: 0 0 12px rgba(155, 93, 229, 0.8), 0 0 24px rgba(13, 202, 240, 0.8);
+  transition: 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 16px rgba(155, 93, 229, 1), 0 0 32px rgba(13, 202, 240, 1);
+}
+
+/* === Menu Button Styling === */
+.menu-button {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid #0DCAF0;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-button:hover {
+  background: #0DCAF0;
+  color: black;
+}
+
+/* === Background Animation - Moving Stars === */
+
+/* Stars Layer */
+.stars, .twinkling {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* First Layer: Distant Moving Stars */
+.stars {
+  background: url("https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif");
+  background-size: cover;
+  animation: moveStars 50s linear infinite;
+}
+
+/* Second Layer: Twinkling Stars */
+.twinkling {
+  background: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2I4Mm14bnhrZWw4bTBqejEyMTBzaDQzdncydGZyOW1jbGI2MXVoOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/FhR17qptfdaMg/giphy.gif");
+  background-size: cover;
+  opacity: 0.6;
+  animation: moveTwinkling 80s linear infinite;
+}
+
+/* Animation Keyframes */
+@keyframes moveStars {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-1000px); }
+}
+
+@keyframes moveTwinkling {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
