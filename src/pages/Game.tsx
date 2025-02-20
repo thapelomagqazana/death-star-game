@@ -1,6 +1,6 @@
 /**
  * @file Game.tsx
- * @description Game screen with HUD, controls, and pause menu.
+ * @description Game screen with responsive HUD, controls, and pause menu.
  */
 
 import React, { useState } from "react";
@@ -11,17 +11,21 @@ import PauseMenu from "../components/PauseMenu";
 /**
  * @function Game
  * @description Main game screen containing HUD, controls, and pause functionality.
- * @returns {JSX.Element} Game UI component.
  */
-const Game : React.FC = () => {
+const Game: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className="relative h-screen w-screen bg-black text-white">
+    <div className="relative h-screen w-screen bg-black text-white flex flex-col">
       {/* Heads-Up Display (HUD) */}
       <HUD />
 
-      {/* Game Controls */}
+      {/* Game Area (Centered) */}
+      <div className="flex-grow flex items-center justify-center">
+        <p className="text-xl md:text-2xl lg:text-4xl">Gameplay Here...</p>
+      </div>
+
+      {/* Game Controls (Adaptive Buttons) */}
       <GameControls />
 
       {/* Pause Menu */}
